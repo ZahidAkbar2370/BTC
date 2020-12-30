@@ -19,10 +19,7 @@
     review,</br></br></br> Soon you will receive your payment in your account.</strong><h4>
 </div>
 </div>
-        
-
 
 @endsection
 @section('footer')
-    {{-- expr --}}
 @endsection

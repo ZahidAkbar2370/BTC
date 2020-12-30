@@ -58,7 +58,7 @@
 
                                     @endphp</h4>
                                     <ul >
-                                        <li><a href="#" style="color: orange">Home</a></li>
+                                        <li><a href="/" style="color: orange">Home</a></li>
                                         <li><a href="#"  style="color:orange">Sell/Buy</a></li>
                                         <li><a href="#" style="color:orange">Exchange</a></li>
                                         <li><a href="#" style="color:orange">Marketplace</a></li>

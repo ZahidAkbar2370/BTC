@@ -1,4 +1,4 @@
-@extends('admin_layout')
+@extends('admin_layout')
 @section('admin_content')
 
 
@@ -30,7 +30,7 @@
 							  <label class="control-label" for="date01"><b>Payment Method</b></label>
 
 							  <div class="controls">
-								<input type="text" class="input-xlarge" name="payment_method" value="{{ $data->payment_method }}" required>
+								<input type="text" class="input-xlarge" name="payment_method" value="{{ $data->payment_method }}" required readonly="">
 							  </div>
 							  
 							</div>
@@ -71,7 +71,7 @@
 							  <label class="control-label" for="date01"><b>Recived Bitcoin</b></label>
 
 							  <div class="controls">
-								<input type="text" class="input-xlarge" name="recived_bitcoin" value="{{ $data->recived_bitcoin}}" required>
+								<input type="text" class="input-xlarge" name="recived_bitcoin" value="{{ $data->recived_bitcoin}}" required readonly="">
 							  </div>
 							  
 							</div>
@@ -81,7 +81,7 @@
 							  <label class="control-label" for="date01"><b>Bitcoin Value</b></label>
 
 							  <div class="controls">
-								<input type="text" class="input-xlarge" name="bitcoin_current_val" value="{{ $data->bitcoin_current_val }}" required>
+								<input type="text" class="input-xlarge" name="bitcoin_current_val" value="{{ $data->bitcoin_current_val }}" required readonly="">
 							  </div>
 							  
 							</div>
@@ -101,7 +101,7 @@
 							  <label class="control-label" for="date01"><b>Recived Total Amount</b></label>
 
 							  <div class="controls">
-								<input type="text" class="input-xlarge" name="recived_total_amount" value="{{ $data->recived_total_amount }}" required>
+								<input type="text" class="input-xlarge" name="recived_total_amount" value="{{ $data->recived_total_amount }}" required readonly="">
 							  </div>
 							  
 							</div>

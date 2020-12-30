@@ -58,32 +58,10 @@ class HomeController extends Controller
       // }
       // echo $btc;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     $Bit_Cry_Prices=BitcoinValuesApi::all();
-
-
-  
-    
-        return view('layout')->with('View_Bit_Cry_Prices',$Bit_Cry_Prices);
-    
-
-    	$Bit_Cry_Prices=Http::get('https://api.coincap.io/v2/assets')->json();
+      $Bit_Cry_Prices=BitcoinValuesApi::all();
+      return view('layout')->with('View_Bit_Cry_Prices',$Bit_Cry_Prices);
+      $Bit_Cry_Prices=Http::get('https://api.coincap.io/v2/assets')->json();
         return view('layout')->with('View_Bit_Cry_Prices',$Bit_Cry_Prices['data']);
-    	// return view('layout');
     }
 
 
@@ -96,18 +74,10 @@ class HomeController extends Controller
      // return $Bit_Cry_Prices=Http::get('https://web-api.coinmarketcap.com/v1/tools/price-conversion?amount=1&convert=BTC,USD,EUR,AMD&id=1')->json();
     return $Bit_Cry_Prices=Http::get($url)->json();
    } 
-
-
-   // public function session(Request $req)
-   // {
-   //   $req->session()->put('data',$req->input());
-   //   return redirect('dashboard');
-   // }
    public function edit_commission_fee($id)
    {
      $data=DB::select("select* from commission_values where id='$id'");
       return view('admin.edit_commission_fee')->with('all_data',$data);
-     // return view('admin.edit_commission_fee');
    }
    public function update_commission_fee(Request $req,$id)
    { 
@@ -133,17 +103,6 @@ class HomeController extends Controller
     {
       return view('profile');
     }
-    //  public function create_order(Request $request)
-    // {
-    //   echo "output";
-    //   die();
-    //   $paymentVal=$request->input('paymentVal');
-    //   $bitcoin_converted_amount=$request->input('bitcoin_converted_amount');
-    //   $bitcoin_amount=$request->input('bitcoin_amount');
-    //   $bitcoin_convert_to=$request->input('bitcoin_convert_to');
-
-    //   return view('profile')->with('paymentVal',$paymentVal)->with('bitcoin_amount',$bitcoin_amount)->with('bitcoin_convert_to',$bitcoin_convert_to)->with('bitcoin_converted_amount',$bitcoin_converted_amount);
-    // } 
 
 //make order 
     public function make_order(Request $request)
@@ -173,14 +132,12 @@ class HomeController extends Controller
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->perfectmoney_pm_id;
       }
       else if($request->paymentVal=='payza')
       {
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->payza_payza_email;
       }
       else if($request->paymentVal=='payoneer')
       {
@@ -194,35 +151,30 @@ class HomeController extends Controller
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->webmoney_webmoney_purse;
       }
       else if($request->paymentVal=='okpay')
       {
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->okpay_okpay_email;
       }
       else if($request->paymentVal=='skrill')
       {
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->skrill_skrill_email;
       }
       else if($request->paymentVal=='nettler')
       {
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->nettler_nettler_id;
       }
       else if($request->paymentVal=='dash')
       {
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->dash_dash_id;
       }
       else if($request->paymentVal=='money_gram')
       {
@@ -241,14 +193,12 @@ class HomeController extends Controller
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->instaforex_instaforex_id;
       }
       else if($request->paymentVal=='solid_trust_pay')
       {
         Session::put('order_data', array('paymethod'=> $payment_method,'reqData'=>$request->all()));
 
         return view('profile')->with('order_data',Session::get('order_data'));
-        // echo $request->solidtrustpay_std_id;
       }
       else if($request->paymentVal=='us_bank')
       {

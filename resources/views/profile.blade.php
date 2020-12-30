@@ -138,7 +138,7 @@ Send Before  <span id="countdown">0</span>. </b></td>
 <td style="font:bold;font-size:18px"><b>Commission Fee</b></td>
 <td style="font:bold;font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp; <b>@php
                            echo CH::Get_Latest_Commision()[0]->transaction_fee;
-@endphp {{-- {{ $order_data['reqData']['bitcoin_converted_amount'] }} --}} $</b> </td>
+@endphp $</b> </td>
 </tr>
 
 <tr>
@@ -164,7 +164,7 @@ Send Before  <span id="countdown">0</span>. </b></td>
 
 
 
-@endphp {{-- {{ $order_data['reqData']['bitcoin_converted_amount'] }} --}} $ </b></td>
+@endphp$ </b></td>
 </tr>
 <tr>
 <td style="font:bold;font-size:18px"><b>You will Get Paid with</b></td>
@@ -181,7 +181,6 @@ Send Before  <span id="countdown">0</span>. </b></td>
 @elseif($order_data['reqData']['paymentVal']=="bank_wire")
     
    <input type="hidden" name="bankwire_holder_name" value="{{$order_data['reqData']['bankwire_holder_name'] }}">
-   {{-- {{ dd($order_data['reqData']['bankwire_swift_card']) }} --}}
     <input type="hidden" name="bankwire_swift_card" value="{{$order_data['reqData']['bankwire_swift_card'] }}">
     <input type="hidden" name="bankwire_bank_name" value="{{$order_data['reqData']['bankwire_bank_name'] }}">
     <input type="hidden" name="bankwire_iban" value="{{$order_data['reqData']['bankwire_iban'] }}">
@@ -659,31 +658,6 @@ Send Before  <span id="countdown">0</span>. </b></td>
 
 @endif
 
-
-{{-- <tr>
-<td>Your Receiving ID/Email</td>
-<td> &nbsp;&nbsp;&nbsp;&nbsp; janujakhar2370@gmail.com </td>
-</tr>
-<tr>
-<td>Bank Name</td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp; abl </td>
-</tr>
-<tr>
-<td>Country</td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp; Pakistan </td>
-</tr>
-<tr>
-<td>IBAN</td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp; 8347238 </td>
-</tr>
-<tr>
-<td>Swift Code</td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp; 83472398 </td>
-</tr>
-<tr> --}}
-
-
-
 <td style="font:bold;font-size:18px"><b>Order Date</b></td>
 <td style="font:bold;font-size:18px">&nbsp;&nbsp;&nbsp;&nbsp;<b>{{ date('d-m-yy') }}</b>
     <input type="hidden" name="order_date" value="{{ date('d-m-yy') }}">
@@ -697,9 +671,7 @@ Send Before  <span id="countdown">0</span>. </b></td>
 
 {{-- <input type="submit" name="confirm_oder" id="confirm_order" class="form-control" value="Confirm" style="    background-color:#fab915;
   font-weight: bold; "> --}}
-
-
-  <button type='submit' class="text-white btn-block btn btn-success btn-lg shadow-sm border-0">Confirm</button>
+<button type='submit' class="text-white btn-block btn btn-success btn-lg shadow-sm border-0">Confirm</button>
 </form>
 </div>
 <div class="col-md-3">
@@ -713,5 +685,4 @@ Send Before  <span id="countdown">0</span>. </b></td>
  </div>
   @endsection  
 @section('footer')
-    {{-- expr --}}
 @endsection
