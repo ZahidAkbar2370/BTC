@@ -15,12 +15,52 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
         <!-- Core Stylesheet -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    
         <style type="text/css">
             
             #preloader {
 
                 display: none !important; 
             }
+            .loader {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #1e1d1d82;
+    z-index: 100;
+}
+
+.overlay__inner {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.overlay__content {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.spinner {
+    width: 120px;
+    height: 120px;
+    background: transparent;
+    border: 16px solid #f3f3f3;
+    border-radius: 50% !important;
+    border-top: 16px solid #036EB5;
+    display: inline-block;
+    animation: spin 1s infinite linear;
+    border-radius: 100%;
+    border-style: solid;
+}
+
         </style>
         <!-- Favicon -->
       
@@ -30,9 +70,14 @@
             <input type="submit" name="">
         </form> --}}
         <!-- ##### Preloader ##### -->
-        <div id="preloader">
+        {{-- <div id="preloader">
             <i class="circle-preloader"></i>
-        </div>
+        </div> --}}
+        <div class="loader" style="">
+      <div class="overlay__inner">
+        <div class="overlay__content"><span class="spinner"></span></div>
+      </div>
+    </div>
         <!-- ##### Header Area Start ##### -->
         <header class="header-area" style="background-color: rgb(34, 39, 41) !important;";>
             
@@ -184,8 +229,15 @@
                     <script src="{{ asset('js/plugins/plugins.js') }}"></script>
                     <!-- Active js -->
                     <script src="{{ asset('js/active.js') }}"></script>
+
                     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" type="text/javascript"></script>
                     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+    $(".loader").fadeOut(3000);
+});
+                    </script>
 
                    
 

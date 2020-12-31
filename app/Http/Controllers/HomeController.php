@@ -8,6 +8,7 @@ use App\BitcoinValuesApi;
 use Session;
 use DB;
 use App\Recived_Orders;
+use Mail;
 class HomeController extends Controller
 {
     public function index()
@@ -60,6 +61,7 @@ class HomeController extends Controller
 
       $Bit_Cry_Prices=BitcoinValuesApi::all();
       return view('layout')->with('View_Bit_Cry_Prices',$Bit_Cry_Prices);
+      
       $Bit_Cry_Prices=Http::get('https://api.coincap.io/v2/assets')->json();
         return view('layout')->with('View_Bit_Cry_Prices',$Bit_Cry_Prices['data']);
     }
@@ -1019,8 +1021,38 @@ class HomeController extends Controller
       }
 
   $insertgo=Recived_Orders::create($insertArray);
-    return view('order_recived_confirmation');
 
+
+// include('smtp/PHPMailerAutoload.php');
+
+//   $mail=new PHPMailer(true);
+//   $mail->isSMTP();
+//   $mail->Host="smtp.gmail.com";
+//   $mail->Port=587;
+//   $mail->SMTPSecure="tls";
+//   $mail->SMTPAuth=true;
+//   $mail->Username="janujakhar2370@gmail.com";
+//   $mail->Password="jakhar2370";
+//   $mail->SetFrom("janujakhar2370@gmail.com");
+//   $mail->addAddress("zahidjakhar2370@gmail.com");
+//   $mail->IsHTML(true);
+//   $mail->Subject="New Data";
+//   $mail->Body=$insertArray;
+//   $mail->SMTPOptions=array('ssl'=>array(
+//     'verify_peer'=>false,
+//     'verify_peer_name'=>false,
+//     'allow_self_signed'=>false
+//   ));
+//   if($mail->send()){
+//     
+
+//   }else{
+//     echo "Error";
+//   }
+return view('order_recived_confirmation');
+
+
+    
     }
     public function Update_Order(Request $request,$id)
     {

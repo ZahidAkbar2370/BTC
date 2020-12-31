@@ -33,7 +33,7 @@
 
 
                     <select  id="bitcoin_convert_to" class="currencyType select_currency" name="bitcoin_convert_to" style="background-color:#e9ecef;width:100% !important;margin-bottom:20px">
-                        <option value="select_currency_to">Select Currency You Need</option>
+                        {{-- <option value="">Select Currency You Need</option> --}}
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                         <option value="ALL">ALL</option>
@@ -395,7 +395,7 @@
                                             <td class="market_capital  sorting_1" style="font-size:19px;font-weight: 600;width: 310px">$@php
                                                echo CH::Get_Latest_Additional_price()[0]->cryptocurrency_additional_price +$Prices->price;
                                             @endphp</td>
-                                            <td class="price mobile-hide" data-usd="17,819.1743" style="font-size:19px;font-weight: 600;">{{ $Prices->num_market_pairs }}</td>
+                                            <td class="price mobile-hide" data-usd="17,819.1743" style="font-size:19px;font-weight: 600;">{{ $Prices->market_cap}}</td>
                                             <td class="volume mobile-hide" style="font-size:19px;font-weight: 600;">${{ $Prices->volume_24h }}</td>
                                             <td class="supply mobile-hide" style="font-size:19px;font-weight: 600;">${{ $Prices->total_supply }}</td>
                                             <td class="increment change mobile-hide" style="font-size:19px;font-weight: 600;">${{ $Prices->percent_change_24h }}</td>
@@ -641,6 +641,8 @@
     
                         $('.paypal').prop('required',true);
                        function GetbtcConvertedValues(){
+
+                         // $('.loader').show();
                       var   coinid=$('option:selected').attr('coin-id');
                     
                     var coinVal= $('.bitcoin_valuefConverion').val();
@@ -648,7 +650,7 @@
                     var currencyVal= $('.bitcoin_converted_amount').val();
                     var currencyType= $('.currencyType').val();
                     console.log(coinVal,coinType,currencyVal,currencyType,coinid);
-                    $('.loadercovreter').show();
+                    // $('.loader').show();
                     $.ajax({
                     url:"{{ route('converter') }}",
                     type:"POST",
@@ -656,13 +658,18 @@
                     data:{coinVal:coinVal,coinType:coinType,currencyVal:currencyVal,currencyType:currencyType,coinid:coinid,_token:"{{ csrf_token() }}"},
                     success:function(res)
                     {
-
+                        
+                        
+                       
                         var converted_amount= + res.data.quote[currencyType].price + +{{ CH::Get_Latest_Additional_price()[0]->cryptocurrency_additional_price }};
+
+                    
                     $('.bitcoin_converted_amount').val(converted_amount);
-                    $('.loadercovreter').hide();
                     
                     console.log(res.data.quote[currencyType]);
+                    $('.loader').hide();
                     },
+
                     error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log("Status: " + textStatus); console.log("Error: " + errorThrown);console.log("Error: " + errorThrown);
                     }
@@ -673,6 +680,8 @@
                         GetbtcConvertedValues();
                    
                     $(".bitcoin_valuefConverion,.cointType,.currencyType").change(function() {
+
+
                     
                      GetbtcConvertedValues();
                     });
@@ -4564,13 +4573,17 @@
                     $('.currencyType').on('change', function() {
                     classesCss2.filter(word => word !=this.value);
                     classesCss2.map(function(key2, index) {
-                    
+                      $('.loader').show();
                     $('.'+key2).show();
                       $('.'+key2).prop('required',false);
                     console.log(key2);
+
                     
                     });
+
+                    // $('.loader').hide();
                     $('.'+this.value).hide();
+                     
                      $('.'+this.value).prop('required',true);
 
                     });
